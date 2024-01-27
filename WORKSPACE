@@ -18,28 +18,28 @@ python_register_multi_toolchains(
     default_version = default_python_version,
     python_versions = [
         "3.11",
-        "3.10",
+        "3.12",
     ],
     register_coverage_tool = True,
 )
 
 load("@python//:pip.bzl", "multi_pip_parse")
 load("@python//3.11:defs.bzl", interpreter_3_11 = "interpreter")
-load("@python//3.10:defs.bzl", interpreter_3_10 = "interpreter")
+load("@python//3.12:defs.bzl", interpreter_3_12 = "interpreter")
 
 multi_pip_parse(
     name = "pip_deps",
     default_version = default_python_version,
     python_interpreter_target = {
-    "3.11": interpreter_3_11,
-    "3.10": interpreter_3_10,
+        "3.11": interpreter_3_11,
+        "3.12": interpreter_3_12,
     },
     requirements_lock = {
         "3.11": "//py:requirements_lock.txt",
-        "3.10": "//py:requirements_lock.txt",
+        "3.12": "//py:requirements_lock.txt",
     },
 )
 
-load("@pip_deps//:requirements.bzl", install_deps = "install_deps")
+load("@pip_deps//:requirements.bzl", "install_deps")
 
 install_deps()

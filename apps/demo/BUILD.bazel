@@ -1,24 +1,23 @@
-load("@rules_python//python:defs.bzl", "py_binary", "py_test", "py_library")
+load("@rules_python//python:defs.bzl", "py_binary", "py_library", "py_test")
 load("@pip_deps//:requirements.bzl", "requirement")
 
 py_binary(
-  name = "demo",
-  srcs = [
-    "main.py",
-  ],
-  main = "main.py",
-  deps = [
-    ":demo_lib",
-  ],
+    name = "demo",
+    srcs = [
+        "main.py",
+    ],
+    main = "main.py",
+    deps = [
+        ":demo_lib",
+    ],
 )
 
 py_library(
     name = "demo_lib",
     srcs = [
-      "lib.py",
+        "lib.py",
     ],
     deps = [
-      requirement("numpy"),
     ],
 )
 
