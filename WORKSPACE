@@ -11,7 +11,7 @@ load("@rules_python//python:repositories.bzl", "py_repositories", "python_regist
 
 py_repositories()
 
-default_python_version = "3.11"
+default_python_version = "3.12"
 
 python_register_multi_toolchains(
     name = "python",
